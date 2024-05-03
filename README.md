@@ -21,21 +21,53 @@ Você foi contratado para desenvolver um banco de dados que irá armazenar dados
     - ID (chave primária, numérico)
     - Nome (texto)
     - Setor (texto)
+      ```SQL
+      CREATE TABLE Empresa_Parceira (
+      ID INT PRIMARY KEY,
+      Nome VARCHAR(255),
+      Setor VARCHAR(255)
+      );
+      ```
   - Tecnologia:
     - ID (chave primária, numérico)
     - Nome (texto)
     - Área (texto)
+      ```SQL
+      CREATE TABLE Tecnologia (
+      ID INT PRIMARY KEY,
+      Nome VARCHAR(255),
+      Área VARCHAR(255)
+      );
+      ```
   - Uso de Tecnologia:
     - ID_Empresa (chave estrangeira referenciando Empresa Parceira, numérico)
     - ID_Tecnologia (chave estrangeira referenciando Tecnologia, numérico)
     - Ano_de_Início (data)
     - Ano_de_Término (data)
+      ```SQL
+      CREATE TABLE Uso_de_Tecnologia (
+      ID_Empresa INT,
+      ID_Tecnologia INT,
+      Ano_de_Início DATE,
+      Ano_de_Término DATE,
+      FOREIGN KEY (ID_Empresa) REFERENCES Empresa_Parceira(ID),
+      FOREIGN KEY (ID_Tecnologia) REFERENCES Tecnologia(ID)
+      );
+      ```
   - Colaborador:
     - ID (chave primária, numérico)
     - Nome (texto)
     - Cargo (texto)
     - ID_Empresa (chave estrangeira referenciando Empresa Parceira, numérico)
-   
+      ```SQL
+      CREATE TABLE Colaborador (
+      ID INT PRIMARY KEY,
+      Nome VARCHAR(255),
+      Cargo VARCHAR(255),
+      ID_Empresa INT,
+      FOREIGN KEY (ID_Empresa) REFERENCES Empresa_Parceira(ID)
+      );
+      ```
 ### 3. Como essas entidades estão relacionadas?
   - A entidade "Uso de Tecnologia" está relacionada com "Empresa Parceira" e "Tecnologia" através das chaves estrangeiras ID_Empresa e ID_Tecnologia, respectivamente.
   - A entidade "Colaborador" está relacionada com "Empresa Parceira" através da chave estrangeira ID_Empresa.
