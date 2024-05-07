@@ -101,3 +101,5 @@ Você foi contratado para desenvolver um banco de dados que irá armazenar dados
   (1, 'João', 'Desenvolvedor', 1),
   (2, 'Maria', 'Analista de Dados', 2);
   ```
+
+<img src="modeloProposto.png">
